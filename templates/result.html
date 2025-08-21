@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body style="background-color: black; color: white;">
+
+    <h1>Data from 2018 - 2025</h1>
+    {{ summary | safe }}
+
+    <h2>Closing Price</h2>
+    <img src="{{ url_for('static', filename='closing_price.png') }}" alt="Closing Price Graph">
+
+    <h2>Closing Price with Moving Averages</h2>
+    <img src="{{ url_for('static', filename='ma_price.png') }}" alt="Moving Averages Graph">
+
+    <h1>Predictions vs Original</h1>
+    <img src="data:image/png;base64,{{ image_data }}" alt="Prediction Graph">
+
+    <br>
+    <a href="/index.html">Back to Home</a>
+</body>
+</html>

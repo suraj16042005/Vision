@@ -1,0 +1,212 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    text-align: center;
+    background-image: url("../images/bgimag.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+}
+
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.search-container {
+    position: relative;
+    width: 500px; 
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 40px 12px 60px; 
+    border: 1px solid #ccc;
+    border-radius: 25px; 
+    font-size: 16px;
+    outline: none;
+    text-align: left;
+}
+
+.search-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+    font-size: 18px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/*nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}*/
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black; /* Adjust as needed */
+    z-index: 1000; /* Ensures it stays on top */
+}
+
+
+#sign-in-btn {
+    background: linear-gradient(45deg, #ff0080, #ff8c00);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+#login-button {
+    background: linear-gradient(45deg, #ff0080, #ff8c00);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+/* Move Buttons to Right */
+.right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.hero-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 4rem; 
+    font-weight: 800; 
+    color: white; 
+    text-transform: uppercase; 
+    text-align: left; 
+    line-height: 1.2;  
+}
+
+.hero-text2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem; 
+    font-weight: 600; 
+    color: white; 
+    text-transform: uppercase; 
+    text-align: left; 
+    line-height: 1.2;  
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animated-text {
+    animation: slideInLeft 1.8s ease-out;
+}
+
+/*Chart*/
+canvas {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Chart Container (Hidden by Default) */
+.chart-container {
+    display: none; /* Initially hidden */
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Search Section */
+#stockSection {
+    display: none; /* Hidden initially */
+    background: black;
+    height: 100vh; /* Full screen height */
+    overflow-y: auto; /* Make it scrollable */
+    padding-top: 20px;
+}
+
+#stockInput {
+    position: relative;
+    z-index: 10; /* Ensures it's above other elements */
+    pointer-events: auto; /* Makes it clickable */
+}
+
+.navbar, #stockInput {
+    pointer-events: auto;
+}
+
+.chart-container {
+    display: none;  /* Hide initially */
+}
+
+/* Full-Screen Iframe */
+#streamlitFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/*chatgpt*/
+.hero {
+    padding: -500px 20px; /* Reduce padding */
+}
+
+#stockPredictionSection {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: auto;
+}
+
+#predictionFrame {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    border: none;
+}
+

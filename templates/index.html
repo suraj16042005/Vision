@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision - Stock Price Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/vision.js') }}" defer></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+
+    <!-- Bootstrap & Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+                </a>
+            </div>
+
+            <form id="searchForm">
+                <div class="search-container">
+                    <input type="text" id="stockInput" placeholder="Search for Stocks" autocomplete="off">
+                    <i class="fa-solid fa-magnifying-glass" onclick="fetchStockData()"></i>
+                </div>
+            </form>
+
+            <div class="right-buttons">
+                <button id="login-button" class="btn-custom">Sign Up</button>
+                <button id="sign-in-btn" class="btn-custom">Sign in</button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="content">
+        <section class="hero">
+            <h1 class="hero-text animated-text">Welcome to Vision</h1>
+            <p class="hero-text2 animated-text">Unlock the Power of Investing.</p>
+        </section>
+    </div>
+
+    <div id="stockPredictionSection" style="display: none; margin-top: 20px;">
+        <iframe id="predictionFrame" src="" width="100%" height="600px" style="border:none;"></iframe>
+    </div>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            fetchStockData();
+        });
+
+        function fetchStockData() {
+            let stockName = document.getElementById("stockInput").value.trim();
+            if (!stockName) {
+                alert("Please enter a stock name.");
+                return;
+            }
+
+            document.getElementById("stockPredictionSection").style.display = "block";
+            document.getElementById("predictionFrame").src = `/get-stock-data?stock_ticker=${encodeURIComponent(stockName)}`;
+        }
+
+        document.getElementById("sign-in-btn").addEventListener("click", () => window.location.href = "/signin");
+        document.getElementById("login-button").addEventListener("click", () => window.location.href = "/login");
+    </script>
+</body>
+</html>

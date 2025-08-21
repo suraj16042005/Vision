@@ -1,0 +1,37 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables / secrets
+.env
+*.json
+firebase-adminsdk.json
+
+# IDE/project files
+.vscode/
+.idea/
+*.iml
+
+# Model and data files (if too large)
+*.h5
+*.pkl
+*.joblib
+*.csv
+*.db

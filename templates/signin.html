@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #141E30, #243B55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            background: #ff416c;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-container button:hover {
+            background: #ff4b2b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Sign In</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+<!-- Firebase SDK -->
+
+<script type="module" crossorigin="anonymous">
+    // Import Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDUUJVBsswXDZ2mC1wmCLnLcTlUT3HVIdU",
+        authDomain: "vision-dbdc4.firebaseapp.com",
+        projectId: "vision-dbdc4",
+        storageBucket: "vision-dbdc4.appspot.com",
+        messagingSenderId: "913317427494",
+        appId: "1:913317427494:web:1abd0c48d75b2de014469e",
+        measurementId: "G-1LRV2EZ4ER"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Wait for the DOM to be fully loaded before accessing elements
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = document.getElementById("loginForm");
+
+        if (loginForm) {
+            loginForm.addEventListener("submit", async (event) => {
+                event.preventDefault(); // Prevent form refresh
+
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                try {
+                    // 🔑 Sign in existing user instead of creating a new one
+                    await signInWithEmailAndPassword(auth, email, password);
+                    alert("Sign In successful!");
+                    
+                    // Redirect after successful login
+                    window.location.href = "/";
+                } catch (error) {
+                    console.error("Error:", error);
+
+                    if (error.code === "auth/wrong-password") {
+                        alert("Incorrect password. Please try again.");
+                    } else if (error.code === "auth/user-not-found") {
+                        alert("No user found with this email. Please sign up first.");
+                    } else {
+                        alert("Error: " + error.message);
+                    }
+                }
+            });
+        } else {
+            console.error("Error: Form with ID 'loginForm' not found.");
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
